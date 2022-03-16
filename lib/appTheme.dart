@@ -45,7 +45,6 @@ class MyThemeData {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
       ),
     ),
-    //Can't work from here!! so w use it in homepage
     bottomNavigationBarTheme:const BottomNavigationBarThemeData(
       selectedItemColor: selectedColor,
       unselectedItemColor: unSelectedColor,
