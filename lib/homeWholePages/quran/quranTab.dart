@@ -2,9 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:islami/appTheme.dart';
 import 'package:islami/homeWholePages/quran/SuraItem.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
-class QuranTap extends StatelessWidget {
+class QuranTab extends StatelessWidget {
   final List<String> suraNames = ["الفاتحه","البقرة","آل عمران","النساء","المائدة","الأنعام","الأعراف","الأنفال","التوبة","يونس","هود"
     ,"يوسف","الرعد","إبراهيم","الحجر","النحل","الإسراء","الكهف","مريم","طه","الأنبياء","الحج","المؤمنون"
     ,"النّور","الفرقان","الشعراء","النّمل","القصص","العنكبوت","الرّوم","لقمان","السجدة","الأحزاب","سبأ"
@@ -23,7 +24,7 @@ class QuranTap extends StatelessWidget {
           child: Image.asset('assets/images/main_logo.png'),
         ),
         Container(margin: EdgeInsets.only(top: 15,bottom: 8),width: double.infinity,height: 2,color: MyThemeData.colorGold),
-        Text('Sura Name',style: Theme.of(context).textTheme.subtitle2),
+        Text(AppLocalizations.of(context)!.sura_name,style: Theme.of(context).textTheme.subtitle2),
         Container(margin: EdgeInsets.only(top: 15,bottom: 8),width: double.infinity,height: 2,color: MyThemeData.colorGold),
        Expanded(
          child: ListView.separated(

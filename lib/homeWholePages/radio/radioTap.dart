@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:islami/appTheme.dart';
-class RadioTap extends StatelessWidget {
-  const RadioTap({Key? key}) : super(key: key);
+class RadioTab extends StatelessWidget {
+  const RadioTab({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

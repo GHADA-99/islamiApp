@@ -5,6 +5,9 @@ import 'package:islami/homeWholePages/quran/quranTab.dart';
 import 'package:islami/homeWholePages/radio/radioTap.dart';
 import 'package:islami/homeWholePages/sebha/sebhaTap.dart';
 import 'package:islami/homeWholePages/settings/settingsTab.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:islami/provider/App_Provider.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = 'Home Screen';
@@ -18,10 +21,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var provider=Provider.of<AppProvider>(context);
     return Stack(
       children: [
         Image.asset(
-          'assets/images/bg3.png',
+          provider.themeMode==ThemeMode.light?
+          'assets/images/bg3.png':'assets/images/bg.png',
           height: double.infinity,
           width: double.infinity,
           fit: BoxFit.fill,
@@ -35,12 +40,12 @@ class _HomeScreenState extends State<HomeScreen> {
           body: getPage(currentPageIndex),
           bottomNavigationBar: Theme(
             data: Theme.of(context).copyWith(
-              canvasColor: MyThemeData.colorGold,
-              bottomNavigationBarTheme:  const BottomNavigationBarThemeData(
-                 selectedItemColor: MyThemeData.selectedColor,
-                 unselectedItemColor: MyThemeData.unSelectedColor,
-                // backgroundColor: colorGold, using canvas color
-    ),
+              canvasColor: Theme.of(context).primaryColor,
+    //           bottomNavigationBarTheme:  const BottomNavigationBarThemeData(
+    //              selectedItemColor: MyThemeData.selectedColor,
+    //              unselectedItemColor: MyThemeData.unSelectedColor,
+    //             // backgroundColor: colorGold, using canvas color
+    // ),
             ),
             child: BottomNavigationBar(
               onTap: (index) {
@@ -48,25 +53,25 @@ class _HomeScreenState extends State<HomeScreen> {
                 setState(() {});
               },
               currentIndex: currentPageIndex,
-              items: const [
+              items: [
                 BottomNavigationBarItem(
-                  label: 'Radio', //appear lable of item at selection
+                  label: AppLocalizations.of(context)!.radio, //appear lable of item at selection
                   icon:ImageIcon(AssetImage('assets/images/radio.png')),
                 ),
                 BottomNavigationBarItem(
-                  label: 'Sebha',
+                  label: AppLocalizations.of(context)!.sebha,
                   icon: ImageIcon(AssetImage('assets/images/sebha_blue.png')),
                 ),
                 BottomNavigationBarItem(
-                  label: 'Hadeth',
+                  label: AppLocalizations.of(context)!.hadeth,
                   icon: ImageIcon(AssetImage('assets/images/quranic3.png')),
                 ),
                 BottomNavigationBarItem(
-                  label: 'Quran',
+                  label: AppLocalizations.of(context)!.quran,
                   icon: ImageIcon(AssetImage('assets/images/quran.png')),
                 ),
                 BottomNavigationBarItem(
-                   label: 'Settings',
+                   label: AppLocalizations.of(context)!.settings,
                     icon: Icon(Icons.settings),
                 ),
               ],
@@ -79,15 +84,15 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget getPage(int index) {
     if (currentPageIndex == 0) {
-      return RadioTap();
+      return RadioTab();
     } else if (currentPageIndex == 1) {
-      return SebhaTap();
+      return SebhaTab();
     } else if (currentPageIndex == 2) {
-      return HadethTap();
+      return HadethTab();
     } else if(currentPageIndex == 3) {
-      return QuranTap();
+      return QuranTab();
     }else {
-      return SettingTap();
+      return SettingTab();
     }
   }
 }

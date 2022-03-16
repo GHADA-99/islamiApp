@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:islami/appTheme.dart';
+import 'package:islami/provider/App_Provider.dart';
+import 'package:provider/provider.dart';
 
 class SuraContent extends StatefulWidget {
   static const String routeName = 'Sura Content';
@@ -14,12 +16,14 @@ class _SuraContentState extends State<SuraContent> {
 
   @override
   Widget build(BuildContext context) {
+    var provider=Provider.of<AppProvider>(context);
     var args = (ModalRoute.of(context)?.settings.arguments) as SuraContentArg;
     if(Splitedverses.isEmpty){loadFile('${args.index+1}');}
     return Stack(
       children: [
         Image.asset(
-          'assets/images/bg3.png',
+          provider.themeMode==ThemeMode.light?
+          'assets/images/bg3.png':'assets/images/bg.png',
           height: double.infinity,
           width: double.infinity,
           fit: BoxFit.fill,
@@ -57,7 +61,7 @@ class _SuraContentState extends State<SuraContent> {
                          return Container(margin: EdgeInsets.all(8),width: double.infinity,height: 1,color: MyThemeData.colorGold);
                        },
                        itemBuilder: (_, index) {
-                 return Text("${Splitedverses[index]} {${index + 1}}",textDirection: TextDirection.rtl,textAlign: TextAlign.center,style: TextStyle(fontSize: 20));
+                 return Text("${Splitedverses[index]} {${index + 1}}",textDirection: TextDirection.rtl,textAlign: TextAlign.center,style: Theme.of(context).textTheme.headline1?.copyWith(fontSize: 20));
                },itemCount: Splitedverses.length)),
 
 
