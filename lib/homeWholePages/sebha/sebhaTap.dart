@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:islami/appTheme.dart';
 
 
-class SebhaTap extends StatefulWidget {
+class SebhaTab extends StatefulWidget {
   @override
-  State<SebhaTap> createState() => _SebhaTapState();
+  State<SebhaTab> createState() => _SebhaTapState();
 }
 
-class _SebhaTapState extends State<SebhaTap> {
+class _SebhaTapState extends State<SebhaTab> {
   int counter = 0;
   List<String>doaa = ['الله اكبر','لا اله الا الله', 'سبحان الله'];
   int doaaIndexInDoaaList=0;
